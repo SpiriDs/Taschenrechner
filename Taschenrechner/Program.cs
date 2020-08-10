@@ -61,8 +61,15 @@ namespace Taschenrechner
                     break;
 
                 case "/":
-                    resultat = Dividieren(zahl1Double, zahl2Double);
-                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
+                    if (zahl2Double == 0)
+                    {
+                        Console.WriteLine("Dividieren mit 0 ist nicht zulässig");
+                    }
+                    else
+                    {
+                        resultat = Dividieren(zahl1Double, zahl2Double);
+                        Console.WriteLine("Das Resultat ist: {0} ", resultat);
+                    }
                     break;
 
                 default:
