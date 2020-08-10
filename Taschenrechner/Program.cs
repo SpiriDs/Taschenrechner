@@ -10,28 +10,39 @@ namespace Taschenrechner
     {
         private static void Main(string[] args)
         {
-            //Eingabe der Zahlen und Convert.to double
-            Console.Write("Gib die erste Zahl ein: ");
-            double zahl1 = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Gib die zweite Zahl ein: ");
-            double zahl2 = Convert.ToDouble(Console.ReadLine());
+            //Eingabe der Zahlen
 
-            double ergebnis = addieren(zahl1, zahl2);
+            string zahl1 = HoleZahl("Gib die erste Zahl ein: ");
+            string zahl2 = HoleZahl("Gib die zweite Zahl ein: ");
 
-            Console.WriteLine("Das Ergebnis ist: " + ergebnis);
+            //Umwandlung der Eingabe in ein Double
+            double zahl1Double = Convert.ToDouble(zahl1);
+            double zahl2Double = Convert.ToDouble(zahl2);
 
-            wartenAufBenutzerEingabe();
+            //Berechnung ausühren
+            double ergebnis = Addieren(zahl1Double, zahl2Double);
+
+            //Ausgabe
+            Console.WriteLine("Das Ergebnis ist: {0} ", ergebnis);
+            WartenAufBenutzerEingabe();
         }
 
-        private static void wartenAufBenutzerEingabe()
+        private static string HoleZahl(string ausgabeConsole)
+        {
+            Console.Write(ausgabeConsole);
+            string zahl = Console.ReadLine();
+            return zahl;
+        }
+
+        private static void WartenAufBenutzerEingabe()
         {
             Console.WriteLine("Bitte Enter drücken.");
             Console.ReadLine();
         }
 
-        private static double addieren(double zahl1, double zahl2)
+        private static double Addieren(double zahl1, double zahl2)
         {
-            double ergebnis = Convert.ToDouble(zahl1) + Convert.ToDouble(zahl2);
+            double ergebnis = zahl1 + zahl2;
             return ergebnis;
         }
     }
