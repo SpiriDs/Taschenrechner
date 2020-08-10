@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Taschenrechner
 {
@@ -11,7 +7,6 @@ namespace Taschenrechner
         private static void Main(string[] args)
         {
             //Eingabe der Zahlen
-
             string zahl1 = HoleBenutzereingabe("Gib die erste Zahl ein: ");
             string zahl2 = HoleBenutzereingabe("Gib die zweite Zahl ein: ");
             string mathOperation = HoleBenutzereingabe("Bitte gib die auszuführende Operation ein (+/-): ");
@@ -21,64 +16,10 @@ namespace Taschenrechner
             double zahl1Double = Convert.ToDouble(zahl1);
             double zahl2Double = Convert.ToDouble(zahl2);
 
-            double resultat;
-
             //Berechnung ausühren
-
-            /*
-            //If Version
-            if (mathOperation == "+")
-            {
-                resultat = Addieren(zahl1Double, zahl2Double);
-                Console.WriteLine("Das Resultat ist: {0} ", resultat);
-            }
-            else if (mathOperation == "-")
-            {
-                resultat = Subtrahieren(zahl1Double, zahl2Double);
-                Console.WriteLine("Das Resultat ist: {0} ", resultat);
-            }
-            else
-            {
-                Console.WriteLine("Ungültige Eingabe");
-            }*/
-
-            //switch / Case Version
-            switch (mathOperation)
-            {
-                case "+":
-                    resultat = Addieren(zahl1Double, zahl2Double);
-                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
-                    break;
-
-                case "-":
-                    resultat = Subtrahieren(zahl1Double, zahl2Double);
-                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
-                    break;
-
-                case "*":
-                    resultat = Multiplizieren(zahl1Double, zahl2Double);
-                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
-                    break;
-
-                case "/":
-                    if (zahl2Double == 0)
-                    {
-                        Console.WriteLine("Dividieren mit 0 ist nicht zulässig");
-                    }
-                    else
-                    {
-                        resultat = Dividieren(zahl1Double, zahl2Double);
-                        Console.WriteLine("Das Resultat ist: {0} ", resultat);
-                    }
-                    break;
-
-                default:
-                    Console.WriteLine("Ungültige Eingabe");
-                    break;
-            }
+            Berechnung(zahl1Double, zahl2Double, mathOperation);
 
             //Ausgabe
-
             HoleBenutzereingabe("Zum Beenden bitte Enter drücken.");
         }
 
@@ -111,6 +52,45 @@ namespace Taschenrechner
         {
             double quotient = zahl1 / zahl2;
             return quotient;
+        }
+
+        private static void Berechnung(double zahl1, double zahl2, string operation)
+        {
+            double resultat;
+            switch (operation)
+            {
+                case "+":
+                    resultat = Addieren(zahl1, zahl2);
+                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
+                    break;
+
+                case "-":
+                    resultat = Subtrahieren(zahl1, zahl2);
+                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
+                    break;
+
+                case "*":
+                    resultat = Multiplizieren(zahl1, zahl2);
+                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
+                    break;
+
+                case "/":
+                    //Prüfung 0-Divisor
+                    if (zahl2 == 0)
+                    {
+                        Console.WriteLine("Dividieren mit 0 ist nicht zulässig");
+                    }
+                    else
+                    {
+                        resultat = Dividieren(zahl1, zahl2);
+                        Console.WriteLine("Das Resultat ist: {0} ", resultat);
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine("Ungültige Eingabe");
+                    break;
+            }
         }
     }
 }
