@@ -14,19 +14,33 @@ namespace Taschenrechner
 
             string zahl1 = HoleBenutzereingabe("Gib die erste Zahl ein: ");
             string zahl2 = HoleBenutzereingabe("Gib die zweite Zahl ein: ");
+            string mathOperation = HoleBenutzereingabe("Bitte gib die auszuführende Operation ein (+/-): ");
 
             //Umwandlung der Eingabe in ein Double
             //TODO: Auslagern in einer eigene Methode falls es umfangreicher wird
             double zahl1Double = Convert.ToDouble(zahl1);
             double zahl2Double = Convert.ToDouble(zahl2);
 
+            double resultat = 0;
+
             //Berechnung ausühren
-            double summe = Addieren(zahl1Double, zahl2Double);
-            double differenz = Subtrahieren(zahl1Double, zahl2Double);
+            if (mathOperation == "+")
+            {
+                resultat = Addieren(zahl1Double, zahl2Double);
+                Console.WriteLine("Das Resultat ist: {0} ", resultat);
+            }
+            else if (mathOperation == "-")
+            {
+                resultat = Subtrahieren(zahl1Double, zahl2Double);
+                Console.WriteLine("Das Resultat ist: {0} ", resultat);
+            }
+            else
+            {
+                Console.WriteLine("Ungültige Eingabe");
+            }
 
             //Ausgabe
-            Console.WriteLine("Die Summe ist: {0} ", summe);
-            Console.WriteLine("Die Differenz ist: {0} ", differenz);
+
             HoleBenutzereingabe("Zum Beenden bitte Enter drücken.");
         }
 
