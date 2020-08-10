@@ -55,6 +55,16 @@ namespace Taschenrechner
                     Console.WriteLine("Das Resultat ist: {0} ", resultat);
                     break;
 
+                case "*":
+                    resultat = Multiplizieren(zahl1Double, zahl2Double);
+                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
+                    break;
+
+                case "/":
+                    resultat = Dividieren(zahl1Double, zahl2Double);
+                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
+                    break;
+
                 default:
                     Console.WriteLine("Ungültige Eingabe");
                     break;
@@ -82,6 +92,18 @@ namespace Taschenrechner
         {
             double differenz = zahl1 - zahl2;
             return differenz;
+        }
+
+        private static double Multiplizieren(double zahl1, double zahl2)
+        {
+            double produkt = zahl1 * zahl2;
+            return produkt;
+        }
+
+        private static double Dividieren(double zahl1, double zahl2)
+        {
+            double quotient = zahl1 / zahl2;
+            return quotient;
         }
     }
 }
