@@ -21,9 +21,12 @@ namespace Taschenrechner
             double zahl1Double = Convert.ToDouble(zahl1);
             double zahl2Double = Convert.ToDouble(zahl2);
 
-            double resultat = 0;
+            double resultat;
 
             //Berechnung ausühren
+
+            /*
+            //If Version
             if (mathOperation == "+")
             {
                 resultat = Addieren(zahl1Double, zahl2Double);
@@ -37,6 +40,24 @@ namespace Taschenrechner
             else
             {
                 Console.WriteLine("Ungültige Eingabe");
+            }*/
+
+            //switch / Case Version
+            switch (mathOperation)
+            {
+                case "+":
+                    resultat = Addieren(zahl1Double, zahl2Double);
+                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
+                    break;
+
+                case "-":
+                    resultat = Subtrahieren(zahl1Double, zahl2Double);
+                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
+                    break;
+
+                default:
+                    Console.WriteLine("Ungültige Eingabe");
+                    break;
             }
 
             //Ausgabe
