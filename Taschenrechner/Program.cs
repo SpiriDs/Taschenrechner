@@ -12,38 +12,41 @@ namespace Taschenrechner
         {
             //Eingabe der Zahlen
 
-            string zahl1 = HoleZahl("Gib die erste Zahl ein: ");
-            string zahl2 = HoleZahl("Gib die zweite Zahl ein: ");
+            string zahl1 = HoleBenutzereingabe("Gib die erste Zahl ein: ");
+            string zahl2 = HoleBenutzereingabe("Gib die zweite Zahl ein: ");
 
             //Umwandlung der Eingabe in ein Double
+            //TODO: Auslagern in einer eigene Methode falls es umfangreicher wird
             double zahl1Double = Convert.ToDouble(zahl1);
             double zahl2Double = Convert.ToDouble(zahl2);
 
             //Berechnung ausühren
-            double ergebnis = Addieren(zahl1Double, zahl2Double);
+            double summe = Addieren(zahl1Double, zahl2Double);
+            double differenz = Subtrahieren(zahl1Double, zahl2Double);
 
             //Ausgabe
-            Console.WriteLine("Das Ergebnis ist: {0} ", ergebnis);
-            WartenAufBenutzerEingabe();
+            Console.WriteLine("Die Summe ist: {0} ", summe);
+            Console.WriteLine("Die Differenz ist: {0} ", differenz);
+            HoleBenutzereingabe("Zum Beenden bitte Enter drücken.");
         }
 
-        private static string HoleZahl(string ausgabeConsole)
+        private static string HoleBenutzereingabe(string ausgabeConsole)
         {
             Console.Write(ausgabeConsole);
             string zahl = Console.ReadLine();
             return zahl;
         }
 
-        private static void WartenAufBenutzerEingabe()
-        {
-            Console.WriteLine("Bitte Enter drücken.");
-            Console.ReadLine();
-        }
-
         private static double Addieren(double zahl1, double zahl2)
         {
             double ergebnis = zahl1 + zahl2;
             return ergebnis;
+        }
+
+        private static double Subtrahieren(double zahl1, double zahl2)
+        {
+            double differenz = zahl1 - zahl2;
+            return differenz;
         }
     }
 }
