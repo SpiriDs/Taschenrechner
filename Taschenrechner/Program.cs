@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Taschenrechner
 {
-    internal class Program
+    public class Program
     {
         private static void Main(string[] args)
         {
@@ -17,8 +21,10 @@ namespace Taschenrechner
             double zahl2Double = Convert.ToDouble(zahl2);
 
             //Berechnung ausühren
-            Berechnung(zahl1Double, zahl2Double, mathOperation);
+            RechnerModel model = new RechnerModel();
+            double result = model.Berechnen(zahl1Double, zahl2Double, mathOperation);
 
+            Ausgabe(result);
             //Ausgabe
             HoleBenutzereingabe("Zum Beenden bitte Enter drücken.");
         }
@@ -30,67 +36,9 @@ namespace Taschenrechner
             return zahl;
         }
 
-        private static double Addieren(double zahl1, double zahl2)
+        private static void Ausgabe(double resultat)
         {
-            double ergebnis = zahl1 + zahl2;
-            return ergebnis;
-        }
-
-        private static double Subtrahieren(double zahl1, double zahl2)
-        {
-            double differenz = zahl1 - zahl2;
-            return differenz;
-        }
-
-        private static double Multiplizieren(double zahl1, double zahl2)
-        {
-            double produkt = zahl1 * zahl2;
-            return produkt;
-        }
-
-        private static double Dividieren(double zahl1, double zahl2)
-        {
-            double quotient = zahl1 / zahl2;
-            return quotient;
-        }
-
-        private static void Berechnung(double zahl1, double zahl2, string operation)
-        {
-            double resultat;
-            switch (operation)
-            {
-                case "+":
-                    resultat = Addieren(zahl1, zahl2);
-                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
-                    break;
-
-                case "-":
-                    resultat = Subtrahieren(zahl1, zahl2);
-                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
-                    break;
-
-                case "*":
-                    resultat = Multiplizieren(zahl1, zahl2);
-                    Console.WriteLine("Das Resultat ist: {0} ", resultat);
-                    break;
-
-                case "/":
-                    //Prüfung 0-Divisor
-                    if (zahl2 == 0)
-                    {
-                        Console.WriteLine("Dividieren mit 0 ist nicht zulässig");
-                    }
-                    else
-                    {
-                        resultat = Dividieren(zahl1, zahl2);
-                        Console.WriteLine("Das Resultat ist: {0} ", resultat);
-                    }
-                    break;
-
-                default:
-                    Console.WriteLine("Ungültige Eingabe");
-                    break;
-            }
+            Console.WriteLine("Das Resultat ist: {0} ", resultat);
         }
     }
 }
